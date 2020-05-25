@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Questions from './components/Questions';
+import Timer from './components/Timer';
 
 function App() {
+  const [isRunning, setIsRunning] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      { isRunning 
+        ? <> <Timer /> <Questions /> </>
+        : <button className="start" onClick={startTest}>Start Test</button>
+      }
     </div>
   );
+
+  function startTest() {
+    setIsRunning(true);
+  }
 }
 
 export default App;
