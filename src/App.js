@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
-import Questions from './components/Questions';
-import Timer from './components/Timer';
+import { QuestionsProvider } from './context/questionsContext';
+import Test from './components/Test';
 
 function App() {
   const [isRunning, setIsRunning] = useState(false);
 
   return (
-    <div className="App">
-      { isRunning 
-        ? <> <Timer /> <Questions /> </>
-        : <button className="start" onClick={startTest}>Start Test</button>
-      }
-    </div>
+    <QuestionsProvider>
+      <div className="App">
+        { isRunning 
+          ? <Test />
+          : <button className="start" onClick={startTest}>Start Test</button>
+        }
+      </div>
+    </QuestionsProvider>
   );
 
   function startTest() {

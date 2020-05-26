@@ -10,7 +10,7 @@ function Timer() {
     }, [startTime]);
 
     return (
-        <p>{elapsed}</p>
+        <p>Time: {elapsed}</p>
     );
 }
 
