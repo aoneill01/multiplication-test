@@ -1,16 +1,20 @@
 import React, { memo } from 'react';
-import styles from './Questions.module.css';
+import './Question.css';
 import NumberInput from './NumberInput';
 
-function Question({lhs, rhs, answer, onAnswerChanged, showAnswers}) {
-    const isCorrect = lhs * rhs === +answer;
-    
-    return (
-        <div className={`${styles.question} ${showAnswers && (isCorrect ? styles.correct : styles.incorrect)}`}>
-            {lhs} × {rhs} = 
-            <NumberInput value={answer} onChange={onAnswerChanged} className="foo" />
-        </div>
-    );
+function Question({ lhs, rhs, answer, id, onAnswered }) {
+  function handleAnswered(value) {
+    onAnswered(id, value);
+  }
+
+  console.log('Question re-render');
+
+  return (
+    <div className="question">
+      {lhs} × {rhs} =
+      <NumberInput value={answer} onChange={handleAnswered} />
+    </div>
+  );
 }
 
 export default memo(Question);
