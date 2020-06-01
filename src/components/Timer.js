@@ -1,6 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle,
+} from 'react';
 
-function Timer() {
+function Timer(props, ref) {
   const [startTime] = useState(Date.now());
   const [elapsed, setElapsed] = useState(0);
 
@@ -12,14 +17,18 @@ function Timer() {
     return () => clearInterval(timerId);
   }, [startTime]);
 
+  useImperativeHandle(ref, () => ({
+    elapsed,
+  }));
+
   const minutes = Math.floor(elapsed / 60);
   const seconds = elapsed % 60;
 
   return (
-    <p className="timer">
+    <p className="sticky timer">
       {minutes}:{('' + seconds).padStart(2, '0')}
     </p>
   );
 }
 
-export default Timer;
+export default forwardRef(Timer);

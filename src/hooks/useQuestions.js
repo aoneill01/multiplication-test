@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 function randomQuestions() {
   const unsorted = [];
   for (let lhs = 1; lhs <= 10; lhs++) {
-    for (let rhs = 1; rhs <= 10; rhs++) {
+    for (let rhs = lhs; rhs <= 10; rhs++) {
       unsorted.push({
         lhs,
         rhs,

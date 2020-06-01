@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './App.css';
 import Test from './components/Test';
 import { useQuestions } from './hooks/useQuestions';
@@ -14,6 +14,7 @@ const modes = {
 function App() {
   const [mode, setMode] = useState(modes.BEFORE_TEST);
   const [questions, answerQuestion, resetQuestions] = useQuestions();
+  const timerRef = useRef();
 
   function startTest() {
     resetQuestions();
@@ -30,6 +31,8 @@ function App() {
         return;
       }
     }
+
+    console.log(`Elapsed time: ${timerRef.current.elapsed} s`);
 
     setMode(modes.RESULTS);
   }
@@ -49,7 +52,7 @@ function App() {
       case modes.IN_TEST:
         return (
           <>
-            <Timer />
+            <Timer ref={timerRef} />
             <Test questions={questions} onAnswered={answerQuestion} />
             <button className="main" onClick={finishTest}>
               Check Answers

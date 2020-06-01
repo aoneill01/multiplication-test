@@ -17,8 +17,11 @@ button.main {
 }
 
 .timer {
-  background-color: #282c34;
   font-family: monospace;
+}
+
+.sticky {
+  background-color: #282c34;
   position: sticky;
   top: 0;
   width: 100%;

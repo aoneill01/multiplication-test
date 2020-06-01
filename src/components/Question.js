@@ -7,8 +7,6 @@ function Question({ lhs, rhs, answer, id, onAnswered }) {
     onAnswered(id, value);
   }
 
-  console.log('Question re-render');
-
   return (
     <div className="question">
       {lhs} × {rhs} =
