@@ -1,6 +1,13 @@
 .questions {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+@media (max-width: 400px) {
+    .questions {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 .question {
@@ -10,6 +17,7 @@
     flex-direction: column;
     margin: .25em;
     padding: 1em;
+    width: 100px;
 }
 
 .question > div {
